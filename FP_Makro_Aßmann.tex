@@ -1,0 +1,141 @@
+\documentclass[11pt]{scrreport}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[british] {babel}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx,float}
+\usepackage{booktabs}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{suffix}
+\usepackage{xstring}
+\usepackage[onehalfspacing]{setspace}
+\usepackage{chemformula}
+\usepackage[breaklinks,pdfpagelabels,hidelinks]{hyperref}%
+\usepackage[figure]{hypcap}
+\usepackage{cleveref}
+\usepackage[style=chem-angew, backend=biber,doi,chaptertitle,articletitle,abbreviate=false]{biblatex}
+\usepackage{chemfig}
+\usepackage[right=3.5cm, left=2.5cm, top=2.5cm, bottom=2.5cm]{geometry}%,showframe
+\usepackage{ragged2e}
+\usepackage{caption}
+\usepackage[section]{placeins}
+\usepackage{colortbl}
+\usepackage{float}
+\usepackage{mathtools}
+\usepackage{multirow}
+\usepackage{nameref}
+\usepackage{siunitx}
+\sisetup{detect-all}
+\usepackage[useregional]{datetime2}
+\usepackage[nopostdot,style=super,acronyms,nonumberlist,toc,translate=babel]{glossaries-extra}
+\usepackage{tikz}
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{4}
+\renewcommand{\familydefault}{\sfdefault}
+%\addbibresource{FPLiteratur.bib}
+\let\cite=\supercite
+%\numberwithin{equation}{chapter}
+%\newcommand{\mydate}{\DTMdate{2025-8-04}}
+%\newcommand{\thydate}{\DTMdate{2025-9-15}}
+%\newcommand{\abgabedatum}{\DTMdate{2025-9-15}}
+%\newcommand{\PO}{\DTMdate{2024-1-26}}
+%\addto{\captionsgerman}{\renewcommand*{\contentsname}{Inhaltsverzeichnis}}
+
+\makenoidxglossaries
+\newacronym[sort=c]{c}{\ensuremath{c}}{concentration}
+\newacronym[sort=D]{D}{\ensuremath{D}}{diffusion coefficient}
+\newacronym[sort=rh]{rh}{\ensuremath{r_h}}{hydrodynamic radius}
+\newacronym{DLS}{DLS}{dynamic light scattering}
+\newacronym{UV}{UV}{ultraviolet radiation}
+\newacronym[sort=T]{T}{\ensuremath{T}}{absolute temperature}
+\newacronym[sort=kb]{kB}{\ensuremath{k_B}}{Boltzmann constant}
+\newacronym[sort=pi]{pi}{\ensuremath{\pi}}{pi}
+\newacronym[sort=eta]{eta}{\ensuremath{\eta}}{dynamic viscosity}
+\newacronym[sort=n]{n}{\ensuremath{n}}{refractive index}
+\newacronym{SEC}{SEC}{size-exclusion chromatography}
+\newacronym{MALDI}{MALDI-ToF-MS}{matrix assisted laser desorption/ionization time of flight mass spectrometry}
+\newacronym{NMR}{NMR}{nuclear magnetic resonance}
+\newacronym{TCEP}{TCEP-HCl}{tris(2-carboxyethyl)phosphine hydrochloride salt}
+\newacronym{THF}{THF}{tetrahydrofuran}
+\newacronym{DCM}{DCM}{dichloromethane}
+\newacronym{DMF}{DMF}{N,N-dimethylformamide}
+\newacronym{DMSOd6}{DMSO-d6}{deuterated dimethyl sulfoxide}
+\newacronym[sort=CDCl]{CDCl3}{CDCl3}{deuterated chloroform}
+\newacronym{RAFT}{RAFT}{tbd}
+\newacronym{PISA}{PISA}{polymerization induced self-assembly}
+\newacronym{CPDT}{CPDT}{tbd}
+\newacronym{CPBT}{CPBT}{tbd}
+\newacronym{MMPDT}{MMPDT}{tbd}
+\newacronym{MeHQ}{MeHQ}{tbd}
+
+\DeclareSIUnit\year{yr}
+\DeclareSIUnit\Dalton{Da}
+\DeclareSIUnit\ppm{ppm}
+
+\DefineBibliographyExtras{british}{%
+	\DeclareBibstringSet{latin}{andothers,ibidem}%
+	\DeclareBibstringSetFormat{latin}{\mkbibemph{#1}}%
+}
+\UndefineBibliographyExtras{british}{%
+	\UndeclareBibstringSet{latin}%
+}
+
+\raggedbottom
+\begin{document}
+	\begin{titlepage}
+		\setcounter{page}{0}
+		\centering
+		\includegraphics[width=0.7\linewidth]{"HHU_Logo_WortBildMarke.png"}
+		\vspace*{2cm}\\
+		{\LARGE\bfseries Report on the Research Internship:\\
+		Investigating RAFT-Polymerization and PISA on Poly(Lipoates)} \\
+		\vspace{15mm}
+		Faculty of Mathematics and Science\\
+		Heinrich Heine-University Düsseldorf\\
+		\vspace{10mm}
+		at the Chair of Macromolecular Chemistry, Düsseldorf
+		\vfill
+		by:\\
+		Lena-Marie Aßmann \\
+		\href{mailto:lena-marie.assmann@hhu.de}{lena-marie.assmann@hhu.de}\\
+		Student ID number: 3121504\\
+		\vspace{1cm}
+		as an Elective Module for the M. Sc. in Chemistry \\
+		\vspace{20mm}
+		Supervisor: Prof. Dr. G. Delaittre\\
+		Supervising Doctoral Student: S. Hylla, M. Sc.\\
+		Completion of the written report: \today
+		\vfill
+	\end{titlepage}
+	\pagenumbering{Roman}
+	\setcounter{page}{1}
+	\tableofcontents
+	\newpage
+	\pagenumbering{arabic}
+	\setcounter{page}{1}
+	\chapter{AF4}
+	\acrshort{CDCl3}
+	\printnoidxglossary[type=acronym]
+	\newpage
+	\addcontentsline{toc}{chapter}{List of Figures}
+	\listoffigures
+	{\let\clearpage\relax\listoftables}
+	\addcontentsline{toc}{chapter}{List of Tables}
+	%	\bibliographystyle{plain}
+	%\sloppy\printbibliography[title=Literature]
+	%\addcontentsline{toc}{chapter}{Literature}
+	\clearpage
+	\pagenumbering{arabic}
+	\renewcommand*{\thepage}{A\arabic{page}}
+	\makeatletter 
+	\renewcommand{\thefigure}{A\@arabic\c@figure}
+	\renewcommand{\thetable}{A\@arabic\c@table}
+	\makeatother
+	\chapter*{Appendix} 
+	\addcontentsline{toc}{chapter}{Appendix}
+	\section*{AF4}
+	\addcontentsline{toc}{section}{AF4}
+	
+\end{document}
