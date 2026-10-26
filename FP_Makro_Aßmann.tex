@@ -17,7 +17,7 @@
 \usepackage{cleveref}
 \usepackage[style=chem-angew, backend=biber,doi,chaptertitle,articletitle,abbreviate=false]{biblatex}
 \usepackage{chemfig}
-\usepackage[right=3.5cm, left=2.5cm, top=2.5cm, bottom=2.5cm]{geometry}%,showframe
+\usepackage[right=2.5cm, left=2.5cm, top=2cm, bottom=2cm]{geometry}%,showframe
 \usepackage{ragged2e}
 \usepackage{caption}
 \usepackage[section]{placeins}
@@ -34,7 +34,7 @@
 \setcounter{tocdepth}{4}
 \setcounter{secnumdepth}{4}
 \renewcommand{\familydefault}{\sfdefault}
-%\addbibresource{FPLiteratur.bib}
+\addbibresource{FPMakro.bib}
 \let\cite=\supercite
 %\numberwithin{equation}{chapter}
 %\newcommand{\mydate}{\DTMdate{2025-8-04}}
@@ -43,7 +43,7 @@
 %\newcommand{\PO}{\DTMdate{2024-1-26}}
 %\addto{\captionsgerman}{\renewcommand*{\contentsname}{Inhaltsverzeichnis}}
 \makenoidxglossaries
-%\setabbreviationstyle[acronym]{long-short}
+\setabbreviationstyle[acronym]{long-short}
 
 \newacronym[sort=c]{c}{\ensuremath{c}}{concentration}
 \newacronym[sort=D]{D}{\ensuremath{D}}{diffusion coefficient}
@@ -117,14 +117,38 @@
 	\newpage
 	\pagenumbering{arabic}
 	\setcounter{page}{1}
-	\chapter{Introduction}
+	\chapter{Introduction} \label{chapter:introduction}
 	\section{Monomer}
 	\section{\glsentryshort{RAFT}}
 	\section{\glsentryshort{PISA}}
 	\chapter{Experimental}
 	\section{Methods}
+	Within this work a variety of methods have been used. In \autoref{chapter:introduction}, some of the theoretical background for the reactions has been displayed, whereas the focus lies on the analytical aspects in this chapter. Different instruments have been used for monitoring the reaction course, as well as the chemical and physical properties of the monomers and polymers. The following sections give more insight on the selected methods and for some of them a description of the handling of the analysis data to obtain or display results.\\
+	For writing this report, the translation tool \citetitle{noauthor_deepl_nodate} has been used for formulaic purposes.\cite{noauthor_deepl_nodate}
 	\subsection{\glsentryshort{NMR}}
+	The technique \gls{NMR} spectroscopy can be used to determine the chemical composition, and by that also the purity, of chemicals, to obtain the conversion of a and monitor the polymerization reaction.\\
+	For the analysis, \textsuperscript{1}\textit{H}-\gls{NMR} measurements were performed by the CeMSA@HHU (Center for Molecular and Structural Analytics @ Heinrich Heine University) on the \SI{600}{\mega\hertz} spectrometer. The results have been displayed and analyzed via the software MestReNova v17.0.1 which has been obtained through the chemistry department at Heinrich Heine University.
 	\subsubsection{\glsentryshort{DOSY}}
+	\Gls{DOSY} is a form of \gls{NMR} spectroscopy wherein the different signals are measured as a function of their chemical shift as well as their \gls{D}. This allows the differentiation between different molecules within a mixture which makes it a powerful analysis for analyzing block copolymers. Within the CeMSA@HHU, the measurments have been performed on the \SI{600}{\mega\hertz} Evo Neo spectrometer. For the analysis, the software TopSpin 5.0.0 Processing by Bruker has been used. The software can be acquired through the academic processing license on the Bruker website.\cite{noauthor_topspin_nodate}\\
+	The analysis of \gls{DOSY} spectra can be done the following way:
+	\begin{enumerate}
+		\item Make a copy of the folder with the raw data
+		\item Navigate to "\textit{/pdata/1}" within the copied raw data folder and localize the file called "\textit{2rr}"
+		\item Open TopSpin
+		\item Drag and drop the file "\textit{2rr}" into TopSpin\newpage
+		\item Enter the following commands into the command line after the previous one is done:
+		\begin{enumerate}
+			\item xf2
+			\item abs2
+			\item eddosy
+			\item setdiffparm
+			\item dosy2d
+		\end{enumerate}
+		\item TopSpin can be closed once the commands have been run and MestReNova can be opened
+		\item The edited folder with the data can be dragged and dropped into MestReNova
+		\item In the \textit{Stacked} tab, the button \textit{DOSY Plot} needs to be pressed
+		\item The display of the spectra can be edited via the \textit{Properties} window as usual
+	\end{enumerate}
 	\subsection{\glsentryshort{SEC}}
 	\subsection{\glsentryshort{MALDI}}
 	\subsection{\glsentryshort{DLS}}
@@ -134,14 +158,13 @@
 	
 	\newpage
 	\printnoidxglossary[type=acronym]
-	\newpage
+	{\let\clearpage\relax\listoffigures}
 	\addcontentsline{toc}{chapter}{List of Figures}
-	\listoffigures
 	{\let\clearpage\relax\listoftables}
 	\addcontentsline{toc}{chapter}{List of Tables}
-	%	\bibliographystyle{plain}
-	%\sloppy\printbibliography[title=Literature]
-	%\addcontentsline{toc}{chapter}{Literature}
+		%\bibliographystyle{plain}
+	{\let\clearpage\relax\sloppy\printbibliography}
+	\addcontentsline{toc}{chapter}{Bibliography}
 	\clearpage
 	\pagenumbering{arabic}
 	\renewcommand*{\thepage}{A\arabic{page}}
