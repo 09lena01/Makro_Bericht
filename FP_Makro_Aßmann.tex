@@ -17,7 +17,7 @@
 \usepackage{cleveref}
 \usepackage[style=chem-angew, backend=biber,doi,chaptertitle,articletitle,abbreviate=false]{biblatex}
 \usepackage{chemfig}
-\usepackage[right=2.5cm, left=2.5cm, top=2cm, bottom=2cm]{geometry}%,showframe
+\usepackage[right=2cm, left=2cm, top=2cm, bottom=2.5cm]{geometry}%,showframe
 \usepackage{ragged2e}
 \usepackage{caption}
 \usepackage[section]{placeins}
@@ -46,7 +46,7 @@
 \setabbreviationstyle[acronym]{long-short}
 
 \newacronym[sort=c]{c}{\ensuremath{c}}{concentration}
-\newacronym[sort=D]{D}{\ensuremath{D}}{diffusion coefficient}
+\newacronym[sort=Diff]{D}{\ensuremath{D}}{diffusion coefficient}
 \newacronym[sort=rh]{rh}{\ensuremath{r_h}}{hydrodynamic radius}
 \newacronym{DLS}{DLS}{dynamic light scattering}
 \newacronym{UV}{UV}{ultraviolet radiation}
@@ -62,15 +62,20 @@
 \newacronym{TCEP}{TCEP-HCl}{tris(2-carboxyethyl)phosphine hydrochloride salt}
 \newacronym{THF}{THF}{tetrahydrofuran}
 \newacronym{DCM}{DCM}{dichloromethane}
-\newacronym{DMF}{DMF}{N,N-dimethylformamide}
+\newacronym{DMF}{DMF}{\textit{N,N}-dimethylformamide}
 \newacronym{DMSOd6}{DMSO-d6}{deuterated dimethyl sulfoxide}
-\newacronym[sort=CDCl]{CDCl3}{CDCl3}{deuterated chloroform}
+\newacronym[sort=CDCl]{CDCl3}{CDCl\textsubscript{3}}{deuterated chloroform}
 \newacronym{RAFT}{RAFT}{tbd}
 \newacronym{PISA}{PISA}{polymerization induced self-assembly}
 \newacronym{CPDT}{CPDT}{tbd}
 \newacronym{CPBT}{CPBT}{tbd}
 \newacronym{MMPDT}{MMPDT}{tbd}
 \newacronym{MeHQ}{MeHQ}{tbd}
+\newacronym[sort=Mn]{Mn}{\ensuremath{M_n}}{number average molar mass}
+\newacronym[sort=Mw]{Mw}{\ensuremath{M_w}}{mass average molar mass}
+\newacronym[sort=Disp]{dispersity}{\textit{Đ}}{dispersity}
+\newacronym{HHU}{HHU}{Heinrich-Heine University}
+\newacronym{CEMSA}{CeMSA@HHU}{Center for Molecular and Structural Analytics @ Heinrich-Heine University}
 
 \DeclareSIUnit\year{yr}
 \DeclareSIUnit\Dalton{Da}
@@ -127,15 +132,15 @@
 	For writing this report, the translation tool \citetitle{noauthor_deepl_nodate} has been used for formulaic purposes.\cite{noauthor_deepl_nodate}
 	\subsection{\glsentryshort{NMR}}
 	The technique \gls{NMR} spectroscopy can be used to determine the chemical composition, and by that also the purity, of chemicals, to obtain the conversion of a and monitor the polymerization reaction.\\
-	For the analysis, \textsuperscript{1}\textit{H}-\gls{NMR} measurements were performed by the CeMSA@HHU (Center for Molecular and Structural Analytics @ Heinrich Heine University) on the \SI{600}{\mega\hertz} spectrometer. The results have been displayed and analyzed via the software MestReNova v17.0.1 which has been obtained through the chemistry department at Heinrich Heine University.
+	For the analysis, \textsuperscript{1}\textit{H}-\gls{NMR} measurements were performed by the \gls{CEMSA} on the \SI{600}{\mega\hertz} spectrometer. The results have been displayed and analyzed via the software MestReNova v17.0.1 which has been obtained through the chemistry department at Heinrich Heine University.
 	\subsubsection{\glsentryshort{DOSY}}
-	\Gls{DOSY} is a form of \gls{NMR} spectroscopy wherein the different signals are measured as a function of their chemical shift as well as their \gls{D}. This allows the differentiation between different molecules within a mixture which makes it a powerful analysis for analyzing block copolymers. Within the CeMSA@HHU, the measurments have been performed on the \SI{600}{\mega\hertz} Evo Neo spectrometer. For the analysis, the software TopSpin 5.0.0 Processing by Bruker has been used. The software can be acquired through the academic processing license on the Bruker website.\cite{noauthor_topspin_nodate}\\
+	\Gls{DOSY} is a form of \gls{NMR} spectroscopy wherein the different signals are measured as a function of their chemical shift as well as their \gls{D}. This allows the differentiation between different molecules within a mixture which makes it a powerful analysis for analyzing block copolymers. Within the \gls{CEMSA}, the measurments have been performed on the \SI{600}{\mega\hertz} Evo Neo spectrometer. For the analysis, the software TopSpin 5.0.0 Processing by Bruker has been used. The software can be acquired through the academic processing license on the Bruker website.\cite{noauthor_topspin_nodate}\\
 	The analysis of \gls{DOSY} spectra can be done the following way:
 	\begin{enumerate}
 		\item Make a copy of the folder with the raw data
 		\item Navigate to "\textit{/pdata/1}" within the copied raw data folder and localize the file called "\textit{2rr}"
 		\item Open TopSpin
-		\item Drag and drop the file "\textit{2rr}" into TopSpin\newpage
+		\item Drag and drop the file "\textit{2rr}" into TopSpin \newpage
 		\item Enter the following commands into the command line after the previous one is done:
 		\begin{enumerate}
 			\item xf2
@@ -150,8 +155,44 @@
 		\item The display of the spectra can be edited via the \textit{Properties} window as usual
 	\end{enumerate}
 	\subsection{\glsentryshort{SEC}}
+	\Gls{SEC} is an analysis method to characterize polymers in regard to their molecular weight. This provides information on the molar mass distribution and characteristic values, such as the \gls{Mn}, \gls{Mw} and the \gls{dispersity}.\\
+	The measurements for the \gls{SEC} analysis were performed on the instruments within the Chair of Macromolecular Chemistry at \gls{HHU}. The majority of the measurements have been collected on the instrument with \gls{DMF} as a solvent, the remaining measurements have been made on the \gls{THF} instrument. The data has been exported as an ASCII file and plotted on OriginPro 2025 v10.2.
 	\subsection{\glsentryshort{MALDI}}
+	In order to receive information on the end groups of polymers, \gls{MALDI} can be measured by the \gls{CEMSA}. For this, the samples need to be in solution and an approximate molar mass is needed to set the measurement window. The concentration should be approximately \SI{1}{\milli\gram\per\milli\liter} and for the samples within this research work, \gls{THF} has been selected as a solvent.\\
+	The analysis of the \gls{MALDI} spectra can be done as follows:
+	\begin{enumerate}
+		\item Request the measurement data from the \gls{CEMSA}. This can be done via mail with specification of the measurement number which can be found on the handout result sheet
+		\item Copy the measurement data onto a USB stick and access the mass spectrometry computer within the Chair of Macromolecular Chemistry at \gls{HHU}
+		\item The following programs can be used to analyze \gls{MALDI} data of polymers:\\
+		\includegraphics[width=7cm]{MALDI_Auswertung/overview_programs.PNG}
+		\begin{enumerate}
+			\item flexAnalysis: Edit the peaklist
+			\begin{enumerate}
+				\item Open your measurement data under \textit{File -- Open}
+				\item tbd\includegraphics[width=\linewidth]{MALDI_Auswertung/flexAnalysis_MassList.PNG}
+				\item tbd\includegraphics[width=\linewidth]{MALDI_Auswertung/flexAnalysis_Process.PNG}
+				\item tbd\includegraphics[width=\linewidth]{MALDI_Auswertung/flexAnalysis_Method.PNG}
+				\item tbd \includegraphics[width=10cm]{MALDI_Auswertung/flexAnalysis_Method_EditProcessingMethod.PNG}
+				\item tbd \includegraphics[width=.9\linewidth]{MALDI_Auswertung/flexAnalysis_Export.PNG}
+				\item Save your edits under \textit{File -- Save}
+			\end{enumerate}
+			\item Polymer Table Editor: Create tables for your experiments with the masses for your specific monomers and end groups
+			\begin{enumerate}
+				\item The program has a list of standard monomers, endgroups and cations that can be edited
+				\item In the tab \textit{Monomer} new monomers can be added. By entering the chemical formula the mass is automatically calculated. Alternatively the mass can be entered without the chemical formula\\ \includegraphics[width=.9\linewidth]{MALDI_Auswertung/polymer_table.PNG}
+				\item For each monomer, end groups can be defined by clicking on the respective row and the tab \textit{Endgroup (abbrev.) -- Add}. The position of the end group in relation to the monomer also needs to be added\\ \includegraphics[width=.9\linewidth]{MALDI_Auswertung/polymer_table_endgroup.PNG}
+				\item Additional cations can be added or modified in the \textit{Cation} tab if necessary 
+				\item Click \textit{Save Table...} and save it at an accessible location for later use
+			\end{enumerate}
+			\item PolyTools: Analyse your polymer mass spectra by assigning the masses to peaks
+			\begin{enumerate}
+				\item tbd\\
+				\includegraphics[width=\linewidth]{MALDI_Auswertung/463-0041.PNG}
+			\end{enumerate}
+		\end{enumerate}
+	\end{enumerate}
 	\subsection{\glsentryshort{DLS}}
+	tbd
 	\chapter{Results \& Discussion}
 	
 	\chapter{Summary \& Outlook}
