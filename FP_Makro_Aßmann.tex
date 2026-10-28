@@ -76,6 +76,7 @@
 \newacronym[sort=Disp]{dispersity}{\textit{Đ}}{dispersity}
 \newacronym{HHU}{HHU}{Heinrich-Heine University}
 \newacronym{CEMSA}{CeMSA@HHU}{Center for Molecular and Structural Analytics @ Heinrich-Heine University}
+\newacronym{PDI}{PDI}{polydispersity index}
 
 \DeclareSIUnit\year{yr}
 \DeclareSIUnit\Dalton{Da}
@@ -123,16 +124,26 @@
 	\pagenumbering{arabic}
 	\setcounter{page}{1}
 	\chapter{Introduction} \label{chapter:introduction}
-	\section{Monomer}
+	\section{Lipoic Acid}
+	\subsection{General Background}
+	\subsection{Esterification}
 	\section{\glsentryshort{RAFT}}
+	\subsection{General Background}
+	\subsection{Application to Lipoates}
 	\section{\glsentryshort{PISA}}
+	\subsection{General Background}
+	\subsection{Reverse \glsentryshort{PISA}}
+	\subsection{Degradation of Poly(Lipoate)}
 	\chapter{Experimental}
 	\section{Methods}
 	Within this work a variety of methods have been used. In \autoref{chapter:introduction}, some of the theoretical background for the reactions has been displayed, whereas the focus lies on the analytical aspects in this chapter. Different instruments have been used for monitoring the reaction course, as well as the chemical and physical properties of the monomers and polymers. The following sections give more insight on the selected methods and for some of them a description of the handling of the analysis data to obtain or display results.\\
 	For writing this report, the translation tool \citetitle{noauthor_deepl_nodate} has been used for formulaic purposes.\cite{noauthor_deepl_nodate}
+	\subsection{\glsentryshort{SEC}}
+	\Gls{SEC} is an analysis method to characterize polymers in regard to their molecular weight. This provides information on the molar mass distribution and characteristic values, such as the \gls{Mn}, \gls{Mw} and the \gls{dispersity}.\\
+	The measurements for the \gls{SEC} analysis were performed on the instruments within the Chair of Macromolecular Chemistry at \gls{HHU} according to the established procedure within the group. The majority of the measurements have been collected on the instrument with \gls{DMF} as a solvent, the remaining measurements have been made on the \gls{THF} instrument. The data has been exported as an ASCII file and plotted on OriginPro 2025 v10.2.
 	\subsection{\glsentryshort{NMR}}
 	The technique \gls{NMR} spectroscopy can be used to determine the chemical composition, and by that also the purity, of chemicals, to obtain the conversion of a and monitor the polymerization reaction.\\
-	For the analysis, \textsuperscript{1}\textit{H}-\gls{NMR} measurements were performed by the \gls{CEMSA} on the \SI{600}{\mega\hertz} spectrometer. The results have been displayed and analyzed via the software MestReNova v17.0.1 which has been obtained through the chemistry department at Heinrich Heine University.
+	For the analysis, \textsuperscript{1}\textit{H}-\gls{NMR} measurements were performed by the \gls{CEMSA} on the \SI{600}{\mega\hertz} spectrometer. The results have been displayed and analyzed via the software MestReNova v17.0.1 which has been obtained through the chemistry department at Heinrich Heine University.\newpage
 	\subsubsection{\glsentryshort{DOSY}}
 	\Gls{DOSY} is a form of \gls{NMR} spectroscopy wherein the different signals are measured as a function of their chemical shift as well as their \gls{D}. This allows the differentiation between different molecules within a mixture which makes it a powerful analysis for analyzing block copolymers. Within the \gls{CEMSA}, the measurments have been performed on the \SI{600}{\mega\hertz} Evo Neo spectrometer. For the analysis, the software TopSpin 5.0.0 Processing by Bruker has been used. The software can be acquired through the academic processing license on the Bruker website.\cite{noauthor_topspin_nodate}\\
 	The analysis of \gls{DOSY} spectra can be done the following way:
@@ -140,7 +151,7 @@
 		\item Make a copy of the folder with the raw data
 		\item Navigate to "\textit{/pdata/1}" within the copied raw data folder and localize the file called "\textit{2rr}"
 		\item Open TopSpin
-		\item Drag and drop the file "\textit{2rr}" into TopSpin \newpage
+		\item Drag and drop the file "\textit{2rr}" into TopSpin
 		\item Enter the following commands into the command line after the previous one is done:
 		\begin{enumerate}
 			\item xf2
@@ -153,10 +164,7 @@
 		\item The edited folder with the data can be dragged and dropped into MestReNova
 		\item In the \textit{Stacked} tab, the button \textit{DOSY Plot} needs to be pressed
 		\item The display of the spectra can be edited via the \textit{Properties} window as usual
-	\end{enumerate}
-	\subsection{\glsentryshort{SEC}}
-	\Gls{SEC} is an analysis method to characterize polymers in regard to their molecular weight. This provides information on the molar mass distribution and characteristic values, such as the \gls{Mn}, \gls{Mw} and the \gls{dispersity}.\\
-	The measurements for the \gls{SEC} analysis were performed on the instruments within the Chair of Macromolecular Chemistry at \gls{HHU}. The majority of the measurements have been collected on the instrument with \gls{DMF} as a solvent, the remaining measurements have been made on the \gls{THF} instrument. The data has been exported as an ASCII file and plotted on OriginPro 2025 v10.2.
+	\end{enumerate}\newpage
 	\subsection{\glsentryshort{MALDI}}
 	In order to receive information on the end groups of polymers, \gls{MALDI} can be measured by the \gls{CEMSA}. For this, the samples need to be in solution and an approximate molar mass is needed to set the measurement window. The concentration should be approximately \SI{1}{\milli\gram\per\milli\liter} and for the samples within this research work, \gls{THF} has been selected as a solvent.\\
 	The analysis of the \gls{MALDI} spectra can be done as follows:
@@ -164,21 +172,22 @@
 		\item Request the measurement data from the \gls{CEMSA}. This can be done via mail with specification of the measurement number which can be found on the handout result sheet
 		\item Copy the measurement data onto a USB stick and access the mass spectrometry computer within the Chair of Macromolecular Chemistry at \gls{HHU}
 		\item The following programs can be used to analyze \gls{MALDI} data of polymers:\\
-		\includegraphics[width=7cm]{MALDI_Auswertung/overview_programs.PNG}
+		\includegraphics[width=6cm]{MALDI_Auswertung/overview_programs.PNG}
 		\begin{enumerate}
 			\item flexAnalysis: Edit the peaklist
 			\begin{enumerate}
 				\item Open your measurement data under \textit{File -- Open}
-				\item tbd\includegraphics[width=\linewidth]{MALDI_Auswertung/flexAnalysis_MassList.PNG}
-				\item tbd\includegraphics[width=\linewidth]{MALDI_Auswertung/flexAnalysis_Process.PNG}
-				\item tbd\includegraphics[width=\linewidth]{MALDI_Auswertung/flexAnalysis_Method.PNG}
-				\item tbd \includegraphics[width=10cm]{MALDI_Auswertung/flexAnalysis_Method_EditProcessingMethod.PNG}
-				\item tbd \includegraphics[width=.9\linewidth]{MALDI_Auswertung/flexAnalysis_Export.PNG}
+				\item The peak list can be edited in the tab \textit{Mass Liss}. \\
+				\includegraphics[width=.75\linewidth]{MALDI_Auswertung/flexAnalysis_MassList.PNG}
+				\item In the tab \textit{Process} the spectra can be smoothed and a baseline can be substracted.\\ \includegraphics[width=.75\linewidth]{MALDI_Auswertung/flexAnalysis_Process.PNG}
+				\item The parameters of the peak detection can be edited via \textit{Method}. A script for analysis can also be created.\\ \includegraphics[width=.75\linewidth]{MALDI_Auswertung/flexAnalysis_Method.PNG}
+				\item Within \textit{Method -- Edit Processing Method} different settings for detecting signals can be edited. This can be useful if many signals are in a narrow range and cannot be recognized by the default method.\\ \includegraphics[width=8.5cm]{MALDI_Auswertung/flexAnalysis_Method_EditProcessingMethod.PNG}
+				\item The peaklist can be exported via \textit{File -- Export}\\ \includegraphics[width=.85\linewidth]{MALDI_Auswertung/flexAnalysis_Export.PNG}
 				\item Save your edits under \textit{File -- Save}
 			\end{enumerate}
 			\item Polymer Table Editor: Create tables for your experiments with the masses for your specific monomers and end groups
 			\begin{enumerate}
-				\item The program has a list of standard monomers, endgroups and cations that can be edited
+				\item The program has a list of standard monomers, endgroups and cations that can be edited\newpage
 				\item In the tab \textit{Monomer} new monomers can be added. By entering the chemical formula the mass is automatically calculated. Alternatively the mass can be entered without the chemical formula\\ \includegraphics[width=.9\linewidth]{MALDI_Auswertung/polymer_table.PNG}
 				\item For each monomer, end groups can be defined by clicking on the respective row and the tab \textit{Endgroup (abbrev.) -- Add}. The position of the end group in relation to the monomer also needs to be added\\ \includegraphics[width=.9\linewidth]{MALDI_Auswertung/polymer_table_endgroup.PNG}
 				\item Additional cations can be added or modified in the \textit{Cation} tab if necessary 
@@ -186,13 +195,22 @@
 			\end{enumerate}
 			\item PolyTools: Analyse your polymer mass spectra by assigning the masses to peaks
 			\begin{enumerate}
-				\item tbd\\
+				\item Load the peaklist from \textit{flexAnalysis} and the table from \textit{Polymer Table Editor} into \textit{PolyTools}\newpage
+				\item The picture below shows the relevant software interface to analyze your polymer \gls{MALDI} spectra\\
 				\includegraphics[width=\linewidth]{MALDI_Auswertung/463-0041.PNG}
+				\begin{enumerate}
+					\item The table at the bottom shows all the detected signals in which monomers, end groups and cations need to be assigned. The \textit{residuals} are important to assign the correct signals. By checking the boxes in the first column, the entered monomers, end groups and cations become locked and changes cannot be made
+					\item Monomers, end groups and cations can be varied either at the top or immediately above the table
+					\item By clicking \textit{Recalculate}, the \textit{residuals} are getting calculated
+					\item By entering a \textit{repeat unit B}, a second monomer for copolymers can be added
+					\item If the residuals are similar enough, signals can be \textit{Merge}d
+					\end{enumerate}
 			\end{enumerate}
 		\end{enumerate}
 	\end{enumerate}
 	\subsection{\glsentryshort{DLS}}
-	tbd
+	\Gls{DLS} is a method for determining the \gls{rh} of nano- and microparticles in solution. The measurements can be done on the instrument within the Chair of Physical Chemistry I and according to the instructions that can be provided by the Chair of Marcomolecular Chemistry at \gls{HHU}. Adding to said instruction, it is important to export the data separated by a tab instead if a comma.\\
+	For this work, the raw data and the size distribution have been exported. The raw data entails some of the measurement parameters, such as the \gls{eta}, \gls{T}, the number of runs and their duration. Additionally, the \gls{rh} of the species within the sample and the \gls{PDI} can be found. The size distribution data is necessary for plotting the size distribution. For this, the data of a single run, which is displayed in one row, is copied into Microsoft Excel. The second half of that row entails the intensity data points. These are cut and pasted below the radii. The edited data can then be paste transposed and plotted in OriginPro 2025 (v10.2).
 	\chapter{Results \& Discussion}
 	
 	\chapter{Summary \& Outlook}
