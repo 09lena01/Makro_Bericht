@@ -31,6 +31,7 @@
 \usepackage[useregional]{datetime2}
 \usepackage[nopostdot,style=super,acronyms,nonumberlist,toc,translate=babel]{glossaries-extra}
 \usepackage{tikz}
+\usepackage{textalpha}
 \setcounter{tocdepth}{4}
 \setcounter{secnumdepth}{4}
 \renewcommand{\familydefault}{\sfdefault}
@@ -53,20 +54,21 @@
 \newacronym[sort=T]{T}{\ensuremath{T}}{absolute temperature}
 \newacronym[sort=kb]{kB}{\ensuremath{k_B}}{Boltzmann constant}
 \newacronym[sort=pi]{pi}{\ensuremath{\pi}}{pi}
-\newacronym[sort=eta]{eta}{\ensuremath{\eta}}{dynamic viscosity}
+\newacronym[sort=visc]{eta}{\ensuremath{\eta}}{dynamic viscosity}
 \newacronym[sort=n]{n}{\ensuremath{n}}{refractive index}
 \newacronym{SEC}{SEC}{size-exclusion chromatography}
-\newacronym{MALDI}{MALDI-ToF-MS}{matrix assisted laser desorption/ionization time of flight mass spectrometry}
+\newacronym{MALDI}{MALDI-ToF-MS}{matrix assisted laser desorption/ ionization time of flight mass spectrometry}
 \newacronym{NMR}{NMR}{nuclear magnetic resonance}
 \newacronym{DOSY}{DOSY}{diffusion-ordered spectroscopy}
 \newacronym{TCEP}{TCEP-HCl}{tris(2-carboxyethyl)phosphine hydrochloride salt}
 \newacronym{THF}{THF}{tetrahydrofuran}
 \newacronym{DCM}{DCM}{dichloromethane}
+\newacronym{DMAA}{DMAA}{\textit{N,N}-dimethylacrylamide}
 \newacronym{DMF}{DMF}{\textit{N,N}-dimethylformamide}
 \newacronym{DMSOd6}{DMSO-d6}{deuterated dimethyl sulfoxide}
 \newacronym[sort=CDCl]{CDCl3}{CDCl\textsubscript{3}}{deuterated chloroform}
-\newacronym{RAFT}{RAFT}{tbd}
-\newacronym{PISA}{PISA}{polymerization induced self-assembly}
+\newacronym{RAFT}{RAFT}{reversible addition fragmentation chain transfer}
+\newacronym{PISA}{PISA}{polymerization induced self assembly}
 \newacronym{CPDT}{CPDT}{tbd}
 \newacronym{CPBT}{CPBT}{tbd}
 \newacronym{MMPDT}{MMPDT}{tbd}
@@ -75,8 +77,12 @@
 \newacronym[sort=Mw]{Mw}{\ensuremath{M_w}}{mass average molar mass}
 \newacronym[sort=Disp]{dispersity}{\textit{Đ}}{dispersity}
 \newacronym{HHU}{HHU}{Heinrich-Heine University}
+\newacronym{LpMe}{LpMe}{methyl lipoate}
 \newacronym{CEMSA}{CeMSA@HHU}{Center for Molecular and Structural Analytics @ Heinrich-Heine University}
 \newacronym{PDI}{PDI}{polydispersity index}
+\newacronym{LA}{LA}{lipoic acid}
+\newacronym{ROP}{ROP}{ring-opening polymerization}
+\newacronym{DMAP}{DMAP}{4-dimethylaminopyridine}
 
 \DeclareSIUnit\year{yr}
 \DeclareSIUnit\Dalton{Da}
@@ -126,25 +132,43 @@
 	\chapter{Introduction} \label{chapter:introduction}
 	\section{Lipoic Acid}
 	\subsection{General Background}
+	\Gls{LA} is a cyclic dithiol which is naturally occurring in both procaryotes and eukaryotes, and is displayed in \autoref{fig:LA_structure}. \Gls{LA} has antioxidant properties and is a cofactor in the citric acid cycle. Its chirality provides two enantiomers wherein the (\textit{R})-(+)-\gls{LA} is biologically active. The experimental data show a S-S bond length of \SI{205,3}{\pico\meter}. It has lipophilic properties and can undergo \gls{ROP} which is why it has been selected as a monomer for this work.\cite{smith_lipoic_2004,moura_lipoic_2015,rusu_vibrational_2022}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.4\textwidth]{Graphs/Lipoic_Acid.png}
+		\caption{Chemical Structure of racemic \glsentryfull{LA}.}
+		\label{fig:LA_structure}
+	\end{figure}\noindent
+	The \gls{ROP} for \gls{LA} can be anionic, cationic or radical which is why storing \gls{LA} under UV protection and in the fridge is essential to prevent unwanted polymerization. Additionally, the carboxylic acid can be functionalized to obtain hyperbranched polymers.\cite{liu_architecture-controlled_2019,koelbl_greener_2025,tang_lipoates_2015,debnath_dual-degradable_2025,albanese_controlled-radical_2023}
 	\subsection{Esterification}
-	\section{\glsentryshort{RAFT}}
+	To prevent ionization of the carboxylic acid and therefore unwanted polymerization, esterification is a method to modify the molecule in a minor way to retain most of its chemical properties for \gls{ROP}, but without the carboxylic acid. With \gls{LA}, the chosen mechanisms are either Fischer or Steglich esterification.\\
+	The Fischer esterification is an acid catalyzed esterification under reflux. As a solvent, the alcohol is often used in excess. Here, the carbonyl group is activated by the catalyst and attacked by the nucleophilic alcohol. Water is eliminated after the alcohol addition which results in the ester.\cite{mannu_fischer-speier_2024}\\
+	Alternatively, the Steglich esterification operates with a carbodiimide as a coupling agent at low temperatures between \SIrange{0}{20}{\degreeCelsius} and often \gls{DMAP} as an organocatalyst. Traditionally, \gls{DCM}, \gls{DMF}, \gls{THF} or acetonitrile are used as a solvent.\cite{munawar_steglich_2024,jordan_solvent-reagent_2021}\\
+	For \gls{LA}, most esters for polymerization are the methyl or ethyl lipoate. 
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{Graphs/LpAlk_monomer_synthesis.png}
+		\caption{Overview of Steglich and Fischer esterification of \glsxtrfull{LA}.}
+		\label{fig:esterification_overview}
+	\end{figure}
+	\section{\glsentrytitlecase{RAFT}{long} Polymerization}
 	\subsection{General Background}
 	\subsection{Application to Lipoates}
-	\section{\glsentryshort{PISA}}
+	\section{\glsentrytitlecase{PISA}{long}}
 	\subsection{General Background}
-	\subsection{Reverse \glsentryshort{PISA}}
+	\subsection{Reverse \glsentrytitlecase{PISA}{long}}
 	\subsection{Degradation of Poly(Lipoate)}
 	\chapter{Experimental}
 	\section{Methods}
 	Within this work a variety of methods have been used. In \autoref{chapter:introduction}, some of the theoretical background for the reactions has been displayed, whereas the focus lies on the analytical aspects in this chapter. Different instruments have been used for monitoring the reaction course, as well as the chemical and physical properties of the monomers and polymers. The following sections give more insight on the selected methods and for some of them a description of the handling of the analysis data to obtain or display results.\\
 	For writing this report, the translation tool \citetitle{noauthor_deepl_nodate} has been used for formulaic purposes.\cite{noauthor_deepl_nodate}
-	\subsection{\glsentryshort{SEC}}
+	\subsection{\glsentrytitlecase{SEC}{long}}
 	\Gls{SEC} is an analysis method to characterize polymers in regard to their molecular weight. This provides information on the molar mass distribution and characteristic values, such as the \gls{Mn}, \gls{Mw} and the \gls{dispersity}.\\
 	The measurements for the \gls{SEC} analysis were performed on the instruments within the Chair of Macromolecular Chemistry at \gls{HHU} according to the established procedure within the group. The majority of the measurements have been collected on the instrument with \gls{DMF} as a solvent, the remaining measurements have been made on the \gls{THF} instrument. The data has been exported as an ASCII file and plotted on OriginPro 2025 v10.2.
-	\subsection{\glsentryshort{NMR}}
+	\subsection{\glsentrytitlecase{NMR}{long}}
 	The technique \gls{NMR} spectroscopy can be used to determine the chemical composition, and by that also the purity, of chemicals, to obtain the conversion of a and monitor the polymerization reaction.\\
 	For the analysis, \textsuperscript{1}\textit{H}-\gls{NMR} measurements were performed by the \gls{CEMSA} on the \SI{600}{\mega\hertz} spectrometer. The results have been displayed and analyzed via the software MestReNova v17.0.1 which has been obtained through the chemistry department at Heinrich Heine University.\newpage
-	\subsubsection{\glsentryshort{DOSY}}
+	\subsubsection{\Glsentrylong{DOSY}}
 	\Gls{DOSY} is a form of \gls{NMR} spectroscopy wherein the different signals are measured as a function of their chemical shift as well as their \gls{D}. This allows the differentiation between different molecules within a mixture which makes it a powerful analysis for analyzing block copolymers. Within the \gls{CEMSA}, the measurments have been performed on the \SI{600}{\mega\hertz} Evo Neo spectrometer. For the analysis, the software TopSpin 5.0.0 Processing by Bruker has been used. The software can be acquired through the academic processing license on the Bruker website.\cite{noauthor_topspin_nodate}\\
 	The analysis of \gls{DOSY} spectra can be done the following way:
 	\begin{enumerate}
@@ -165,7 +189,7 @@
 		\item In the \textit{Stacked} tab, the button \textit{DOSY Plot} needs to be pressed
 		\item The display of the spectra can be edited via the \textit{Properties} window as usual
 	\end{enumerate}\newpage
-	\subsection{\glsentryshort{MALDI}}
+	\subsection{\glsentrytitlecase{MALDI}{long}}
 	In order to receive information on the end groups of polymers, \gls{MALDI} can be measured by the \gls{CEMSA}. For this, the samples need to be in solution and an approximate molar mass is needed to set the measurement window. The concentration should be approximately \SI{1}{\milli\gram\per\milli\liter} and for the samples within this research work, \gls{THF} has been selected as a solvent.\\
 	The analysis of the \gls{MALDI} spectra can be done as follows:
 	\begin{enumerate}
@@ -208,21 +232,27 @@
 			\end{enumerate}
 		\end{enumerate}
 	\end{enumerate}
-	\subsection{\glsentryshort{DLS}}
+	\subsection{\glsentrytitlecase{DLS}{long}}
 	\Gls{DLS} is a method for determining the \gls{rh} of nano- and microparticles in solution. The measurements can be done on the instrument within the Chair of Physical Chemistry I and according to the instructions that can be provided by the Chair of Marcomolecular Chemistry at \gls{HHU}. Adding to said instruction, it is important to export the data separated by a tab instead if a comma.\\
 	For this work, the raw data and the size distribution have been exported. The raw data entails some of the measurement parameters, such as the \gls{eta}, \gls{T}, the number of runs and their duration. Additionally, the \gls{rh} of the species within the sample and the \gls{PDI} can be found. The size distribution data is necessary for plotting the size distribution. For this, the data of a single run, which is displayed in one row, is copied into Microsoft Excel. The second half of that row entails the intensity data points. These are cut and pasted below the radii. The edited data can then be paste transposed and plotted in OriginPro 2025 (v10.2).
 	\chapter{Results \& Discussion}
-	
+	\section{Monomer Synthesis}
+	Fischer
+	Steglich
+	\section{Thermal \glsentrytitlecase{RAFT}{long}-Polymerization of \glsentrytitlecase{LpMe}{long}}
+	Different Conditions
+	Different RAFT agents
+	\section{Chain Extension \& \glsentrytitlecase{PISA}{long} with \glsentrytitlecase{LpMe}{long} and \glsentrytitlecase{DMAA}{long}}
 	\chapter{Summary \& Outlook}
 	
 	\newpage
 	\printnoidxglossary[type=acronym]
-	{\let\clearpage\relax\listoffigures}
+	\listoffigures
 	\addcontentsline{toc}{chapter}{List of Figures}
 	{\let\clearpage\relax\listoftables}
 	\addcontentsline{toc}{chapter}{List of Tables}
 		%\bibliographystyle{plain}
-	{\let\clearpage\relax\sloppy\printbibliography}
+	\printbibliography
 	\addcontentsline{toc}{chapter}{Bibliography}
 	\clearpage
 	\pagenumbering{arabic}
