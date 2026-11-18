@@ -47,7 +47,7 @@
 \setabbreviationstyle[acronym]{long-short}
 
 \newacronym[sort=c]{c}{\ensuremath{c}}{concentration}
-\newacronym[sort=Diff]{D}{\ensuremath{D}}{diffusion coefficient}
+\newacronym[sort=Diff]{Diffusion}{\ensuremath{D}}{diffusion coefficient}
 \newacronym[sort=rh]{rh}{\ensuremath{r_h}}{hydrodynamic radius}
 \newacronym{DLS}{DLS}{dynamic light scattering}
 \newacronym{UV}{UV}{ultraviolet radiation}
@@ -67,8 +67,8 @@
 \newacronym{DMF}{DMF}{\textit{N,N}-dimethylformamide}
 \newacronym{DMSOd6}{DMSO-d6}{deuterated dimethyl sulfoxide}
 \newacronym[sort=CDCl]{CDCl3}{CDCl\textsubscript{3}}{deuterated chloroform}
-\newacronym{RAFT}{RAFT}{reversible addition fragmentation chain transfer}
-\newacronym{PISA}{PISA}{polymerization induced self assembly}
+\newacronym{RAFT}{RAFT}{reversible addition-fragmentation chain transfer}
+\newacronym{PISA}{PISA}{polymerization-induced self-assembly}
 \newacronym{CPDT}{CPDT}{tbd}
 \newacronym{CPBT}{CPBT}{tbd}
 \newacronym{MMPDT}{MMPDT}{tbd}
@@ -83,6 +83,11 @@
 \newacronym{LA}{LA}{lipoic acid}
 \newacronym{ROP}{ROP}{ring-opening polymerization}
 \newacronym{DMAP}{DMAP}{4-dimethylaminopyridine}
+\newacronym{RDRP}{RDRP}{reversible-deactivation radical polymerization}
+\newacronym{FRP}{FRP}{free radical polymerizaion}
+\newacronym{IUPAC}{IUPAC}{International Union of Pure and Applied Chemistry}
+\newacronym{CTA}{CTA}{chain-transfer agent}
+\newacronym{DTT}{DTT}{dithiothreitol}
 
 \DeclareSIUnit\year{yr}
 \DeclareSIUnit\Dalton{Da}
@@ -151,39 +156,45 @@
 		\caption{Overview of Steglich and Fischer esterification of \glsxtrfull{LA}.}
 		\label{fig:esterification_overview}
 	\end{figure}
+	\subsection{Degradation of Poly(Lipoate)s}
+	The polymers of lipoic acid derivatives that can be obtained via \gls{ROP} are connected via disulfide bonds which makes them susceptible to depolymerization by reaction with reducing agents. These commonly chosen reducing agents for poly(lipoate)s are \gls{DTT} or \gls{TCEP} and result in the cleavage of the disulfides and obtaining the dithiol. The \gls{DTT} can be used to mimic intracellular and therefore aqueous conditions. \gls{TCEP} on the other hand is used in organic solvents. \cite{albanese_controlled-radical_2023,debnath_dual-degradable_2025,yang_radical_2026}
 	\section{\glsentrytitlecase{RAFT}{long} Polymerization}
 	\subsection{General Background}
-	\Gls{RAFT}
-	- equilibrium
-	- "controlled" radical polymerization 
-	- pseudo-living polymerization
-	- chain extension possible
-	- initiation through chemical, thermal, photo initiation
+	Radical polymerizations can have different approaches, with the \gls{FRP} as the most basic option, which results in high \gls{dispersity} due to recomination or disproportionation during the termination step. On the other hand, \gls{RDRP} takes a different approach. With names, which are discouraged by the \gls{IUPAC}, like "controlled" radical polymerization or pseudo-living polymerization the nature of these mechanisms become clear: the \glsxtrlong{dispersity} is in a narrow range as it is in real living polymerizations, such as anionic or cationic ones. Most \gls{RDRP} happen with an equilibrium which often results in dormant states, so that chain extensions become possible.\cite{shipp_reversible-deactivation_2011,jenkins_terminology_2009}\\
+	One example for \gls{RDRP} reactions is \gls{RAFT} polymerization. It operates with a \gls{CTA} which has a stabilizing group to maintain equilibria. The initiation can be through chemical, thermal or photo initiation, depending on the \gls{RAFT} agent and the schematic \gls{RAFT} mechanism is depicted in \autoref{fig:RAFT_mechanism}.\cite{moad_fundamentals_2021}
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=\textwidth]{Graphs/RAFT_Mechanism.jpg}
-		\caption{Visualization of addition and fragmentation of the \gls{RAFT} mechanism.\cite{moad_fundamentals_2021}}
-	\end{figure}
-	- description general structure
+		\includegraphics[width=.8\textwidth]{Graphs/RAFT_Mechanism.jpg}
+		\caption[Visualization of addition and fragmentation of the \gls{RAFT} mechanism.]{Visualization of addition and fragmentation of the \gls{RAFT} mechanism.\cite{moad_fundamentals_2021}}
+		\label{fig:RAFT_mechanism}
+	\end{figure}\noindent
+	The general structure of the \gls{CTA} is depicted in \autoref{fig:RAFT_agent}. The basic structure is composed of a thiocarbonylthio group with varying stabilizing ("Z") and leaving ("R") groups. The kinetics for the addition of propagating radicals and the fragmentaion of intermediate radicals can be altered by the stabilizing group, whereas the leaving group is responsible for the partition coefficient and needs to be able to reinitiate the polymerization. The partition coefficient gives insight on intermediate radicals preferring to return to starting materials or fragment to products.\cite{keddie_raft_2012}
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=.4\textwidth]{Graphs/RAFT_agents_structure.png}
 		\caption{General structure of \gls{RAFT} agents.}
-	\end{figure}
-	- established \gls{RAFT} agents for commonly used monomers
-	- compatibility issues for block copolymers 
+		\label{fig:RAFT_agent}
+	\end{figure}\noindent
+	A wide variety of Z- and R-groups have been tested in \gls{RAFT} agents for commonly used monomers. \autoref{fig:RAFT_ZR} shows the compatibility for these monomers and can be used as a guide to select the correct \gls{CTA}. Due to the nature of \gls{RDRP}, chain extensions for copolymers can be performed, but the compatibility of the \gls{RAFT} agents with the different monomers needs to be accounted for.
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=\textwidth]{Graphs/RAFT_agents.png}
-		\caption{Different stabilizing and leaving groups for \gls{RAFT} agents and their compatibility with common monomers.\cite{noauthor_lets_nodate}}
+		\includegraphics[width=.9\textwidth]{Graphs/RAFT_agents.png}
+		\caption[Stabilizing and leaving groups for \gls{RAFT} agents and their compatibility with monomers.]{Different stabilizing and leaving groups for \gls{RAFT} agents and their compatibility with common monomers.\cite{noauthor_lets_nodate}}
+		\label{fig:RAFT_ZR}
 	\end{figure}
 	\subsection{Application to Lipoates}
-	- not common enough for established stabilizing and leaving groups
-	- some found for lipoates\cite{lee_light-mediated_2026,lee_controlled_2025}
+	The suitability of leaving and stabilizing groups from \autoref{fig:RAFT_ZR} is for common monomers and for similar structures estimates based on the trend can be made. As dithiols are not part of the more default monomers, it is difficult to predict their reactivity with \gls{CTA}. Finding suitable \gls{RAFT} agents has been part of more recent research and is an ongoing process. For homopolymers, the work by K. \citeauthor{lee_controlled_2025} showed a small variety of tested \gls{CTA} for photo-initiated \gls{RAFT} polymerization of lipoates. D. \citeauthor{lee_light-mediated_2026}'s work tested three different \gls{RAFT} agents for copolymerization of \gls{LA} via photo-initiation. \cite{lee_light-mediated_2026,lee_controlled_2025}
 	\section{\glsentrytitlecase{PISA}{long}}
 	\subsection{General Background}
-	\subsection{Reverse \glsentrytitlecase{PISA}{long}}
-	\subsection{Degradation of Poly(Lipoate)}
+	\Gls{PISA} describes the assembly of amphiphilic block copolymers upon polymerization in solvent, which usually is water. The assembly of the block copolymers then result in the formation of nano-structures which can occur in different morphologies, depending on the lengths of the different blocks amongst other factors. The procedure is shown in \autoref{fig:PISA}: a hydrophilic polymer with a "living" endgroup -- an endgroup that allows chain extension and is compatible with the second monomer-- is in solution with a monomer which is either hydrophobic for which emulsion polymerization is needed, or a monomer with a corresponding hydrophobic polymer which would result in dispersion polymerization. As the chain chain grows, the amphiphilic character of the block copolymer increases until it eventually self-assembles into a particle. \cite{charleux_polymerization-induced_2012,liu_polymerization_2020,doncom_dispersity_2017}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=.55\textwidth]{Graphs/PISA_scheme.png}
+		\caption[Schematic depiction of the reaction steps for \glsxtrfull{PISA}.]{Schematic depiction of the reaction steps for \glsxtrfull{PISA}. \cite{charleux_polymerization-induced_2012}}
+		\label{fig:PISA}
+	\end{figure}
+	\subsection{Reverse Sequence \glsentrytitlecase{PISA}{long}}
+	Recent developments show a different approach for \gls{PISA}. Here, a hydrophobic polymer with a stabilizing endgroup for aqueous conditions is synthesized as the first step. This results in latex particles. By adding a second, hydrophilic monomer, chain extension can be possible which leads to amphiphilic particles. \cite{ali_synthesis_2007,buksa_synthesis_2023}
 	\chapter{Experimental}
 	\section{Methods}
 	Within this work a variety of methods have been used. In \autoref{chapter:introduction}, some of the theoretical background for the reactions has been displayed, whereas the focus lies on the analytical aspects in this chapter. Different instruments have been used for monitoring the reaction course, as well as the chemical and physical properties of the monomers and polymers. The following sections give more insight on the selected methods and for some of them a description of the handling of the analysis data to obtain or display results.\\
@@ -195,7 +206,7 @@
 	The technique \gls{NMR} spectroscopy can be used to determine the chemical composition, and by that also the purity, of chemicals, to obtain the conversion of a and monitor the polymerization reaction.\\
 	For the analysis, \textsuperscript{1}\textit{H}-\gls{NMR} measurements were performed by the \gls{CEMSA} on the \SI{600}{\mega\hertz} spectrometer. The results have been displayed and analyzed via the software MestReNova v17.0.1 which has been obtained through the chemistry department at Heinrich Heine University.\newpage
 	\subsubsection{\Glsentrylong{DOSY}}
-	\Gls{DOSY} is a form of \gls{NMR} spectroscopy wherein the different signals are measured as a function of their chemical shift as well as their \gls{D}. This allows the differentiation between different molecules within a mixture which makes it a powerful analysis for analyzing block copolymers. Within the \gls{CEMSA}, the measurments have been performed on the \SI{600}{\mega\hertz} Evo Neo spectrometer. For the analysis, the software TopSpin 5.0.0 Processing by Bruker has been used. The software can be acquired through the academic processing license on the Bruker website.\cite{noauthor_topspin_nodate}\\
+	\Gls{DOSY} is a form of \gls{NMR} spectroscopy wherein the different signals are measured as a function of their chemical shift as well as their \gls{Diffusion}. This allows the differentiation between different molecules within a mixture which makes it a powerful analysis for analyzing block copolymers. Within the \gls{CEMSA}, the measurments have been performed on the \SI{600}{\mega\hertz} Evo Neo spectrometer. For the analysis, the software TopSpin 5.0.0 Processing by Bruker has been used. The software can be acquired through the academic processing license on the Bruker website.\cite{noauthor_topspin_nodate}\\
 	The analysis of \gls{DOSY} spectra can be done the following way:
 	\begin{enumerate}
 		\item Make a copy of the folder with the raw data
