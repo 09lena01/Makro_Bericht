@@ -7,7 +7,7 @@
 \usepackage{booktabs}
 \usepackage{amsfonts}
 \usepackage{amsmath}
-\usepackage[dvipsnames]{xcolor}
+\usepackage[dvipsnames,table,xcdraw]{xcolor}
 \usepackage{suffix}
 \usepackage{xstring}
 \usepackage[onehalfspacing]{setspace}
@@ -33,6 +33,7 @@
 \usepackage{tikz}
 \usepackage{textalpha}
 \usepackage{hhline}
+\usepackage{subcaption}
 \setcounter{tocdepth}{4}
 \setcounter{secnumdepth}{4}
 \renewcommand{\familydefault}{\sfdefault}
@@ -90,6 +91,11 @@
 \newacronym{IUPAC}{IUPAC}{International Union of Pure and Applied Chemistry}
 \newacronym{CTA}{CTA}{chain-transfer agent}
 \newacronym{DTT}{DTT}{dithiothreitol}
+\newacronym{DCC}{DCC}{\textit{N,N'}-dicyclohexylcarbodiimide}
+\newacronym{EDC}{EDC-HCl}{\textit{N}-(3-dimethylaminopropyl)-\textit{N'}-ethylcarbodiimide hydrochloride}
+\newacronym{TLC}{TLC}{thin-layer chromatography}
+\newacronym{V70}{V70}{2,2'-Azobis(4-methoxy-2,4-dimethylvaleronitrile)}
+
 
 \DeclareSIUnit\year{yr}
 \DeclareSIUnit\Dalton{Da}
@@ -143,7 +149,7 @@
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.4\textwidth]{Graphs/Lipoic_Acid.png}
-		\caption{Chemical Structure of racemic \glsentryfull{LA}.}
+		\caption[Chemical Structure of racemic \glsentryshort{LA}.]{Chemical Structure of racemic \glsentryfull{LA}.}
 		\label{fig:LA_structure}
 	\end{figure}\noindent
 	The \gls{ROP} for \gls{LA} can be anionic, cationic or radical which is why storing \gls{LA} under UV protection and in the fridge is essential to prevent unwanted polymerization. Additionally, the carboxylic acid can be functionalized to obtain hyperbranched polymers.\cite{liu_architecture-controlled_2019,koelbl_greener_2025,tang_lipoates_2015,debnath_dual-degradable_2025,albanese_controlled-radical_2023}
@@ -155,7 +161,7 @@
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{Graphs/LpAlk_monomer_synthesis.png}
-		\caption{Overview of Steglich and Fischer esterification of \glsxtrfull{LA}.}
+		\caption[Overview of Steglich and Fischer esterification of \glsxtrshort{LA}.]{Overview of Steglich and Fischer esterification of \glsxtrfull{LA}.}
 		\label{fig:esterification_overview}
 	\end{figure}
 	\subsection{Degradation of Poly(Lipoate)s}
@@ -192,7 +198,7 @@
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=.55\textwidth]{Graphs/PISA_scheme.png}
-		\caption[Schematic depiction of the reaction steps for \glsxtrfull{PISA}.]{Schematic depiction of the reaction steps for \glsxtrfull{PISA}. \cite{charleux_polymerization-induced_2012}}
+		\caption[Schematic depiction of the reaction steps for \glsxtrshort{PISA}.]{Schematic depiction of the reaction steps for \glsxtrfull{PISA}. \cite{charleux_polymerization-induced_2012}}
 		\label{fig:PISA}
 	\end{figure}
 	\subsection{Reverse Sequence \glsentrytitlecase{PISA}{long}}
@@ -280,11 +286,11 @@
 	The work of \citeauthor{bauer_secondary_2021} chooses an approach for Fischer esterification at room temperature with the alcohol as the solvent. For a replication attempt, the following conditions have been tried: \cite{bauer_secondary_2021}
 	\begin{table}[H]
 		\centering
-		\caption{Stochiometry of used chemicals and duration for Fischer esterification at room temperature.}
+		\caption[Used chemicals and duration for Fischer esterification at room temperature with methanol.]{\centering Stochiometry of used chemicals and duration for Fischer esterification at room temperature with methanol.}
 		\begin{tabular}{|c|cccc|}
 			\hline
 			\textbf{chemical} & \multicolumn{1}{c|}{\textbf{equiv.}} & \multicolumn{1}{c|}{\textbf{m [g]}} & \multicolumn{1}{c|}{\textbf{n [mmol]}} & \textbf{V [mL]} \\ \hline
-			lipoic acid & \multicolumn{1}{c|}{1.0} & \multicolumn{1}{c|}{2.00} & \multicolumn{1}{c|}{9.7} & - \\ \hline
+			\gls{LA} & \multicolumn{1}{c|}{1.0} & \multicolumn{1}{c|}{2.00} & \multicolumn{1}{c|}{9.7} & - \\ \hline
 			methanol & \multicolumn{1}{c|}{49} & \multicolumn{1}{c|}{15.84} & \multicolumn{1}{c|}{494.4} & 20 \\ \hline
 			sulfuric acid & \multicolumn{1}{c|}{0.01} & \multicolumn{1}{c|}{0.01} & \multicolumn{1}{c|}{0.1} & \num{5.2e-3} \\ \hhline{|=|=|=|=|=|}
 			temperature [$^\circ\mathrm{C}$] & \multicolumn{4}{c|}{20 (room temperature)} \\ \hline
@@ -295,31 +301,160 @@
 	\citeauthor{koelbl_greener_2025} had an approach for the esterification of \gls{LA} with ethanol at higher temperatures. The application of methanol was tested with the following conditions:\cite{koelbl_greener_2025}
 	\begin{table}[H]
 		\centering
+		\caption[Used chemicals and duration for Fischer esterification at \SI{80}{\degreeCelsius} with methanol.]{\centering Stochiometry of used chemicals and duration for Fischer esterification at \SI{80}{\degreeCelsius} with methanol.}
 		\begin{tabular}{|c|cccc|}
 			\hline
 			\textbf{chemical} & \multicolumn{1}{c|}{\textbf{equiv.}} & \multicolumn{1}{c|}{\textbf{m [g]}} & \multicolumn{1}{c|}{\textbf{n [mmol]}} & \textbf{V [mL]} \\ \hline
-			lipoic acid & \multicolumn{1}{c|}{1.0} & \multicolumn{1}{c|}{9.99} & \multicolumn{1}{c|}{48.4} & - \\ \hline
-			methanol & \multicolumn{1}{c|}{19.4} & \multicolumn{1}{c|}{30.02} & \multicolumn{1}{c|}{936.9} & 38 \\ \hline
+			\gls{LA} & \multicolumn{1}{c|}{1.0} & \multicolumn{1}{c|}{9.99} & \multicolumn{1}{c|}{48.4} & - \\ \hline
+			ethanol & \multicolumn{1}{c|}{19.4} & \multicolumn{1}{c|}{30.02} & \multicolumn{1}{c|}{936.9} & 38 \\ \hline
 			sulfuric acid & \multicolumn{1}{c|}{0.01} & \multicolumn{1}{c|}{0.06} & \multicolumn{1}{c|}{0.6} & \num{30e-3} \\ \hhline{|=|=|=|=|=|}
 			temperature [$^\circ\mathrm{C}$] & \multicolumn{4}{c|}{80} \\ \hline
 			duration [h] & \multicolumn{4}{c|}{16 (over night)} \\ \hline
 		\end{tabular}
 	\end{table}\noindent
 	Here, the \gls{LA} and methanol were mixed until a homogeneous solution had formed. An air-condensing column was added to the flask and the mixture was heated. Once reflux was obtained, the sulfuric acid was added, the flask was covered with aluminum foil over night.\\ 
-	Once the esterification was done, a spoon (approx. \SI{1}{\gram}) of sodium bicarbonate was added under reflux and stirred for \SI{45}{\minute}. The heat was then turned off and frozen with liquid nitrogen to store the mixture in the fridge. While checking on it for further work-up, it was visible that some monomer had polymerized. The work-up was still conducted, which meant filtering it through cotton wool into a round bottom flask and concentrating it in vacuo until precipitation was visible at a bath temperature of \SI{40}{\degreeCelsius}. The concentrated mixture was then diluted in approximately \SI{20}{\milli\liter} ethyl acetate, filtered through cotton wool and transferred into a separatory funnel. The organic phase was then washed with 2 x \SI{50}{\milli\liter} concentrated sodium bicarbonate solution, 1 x \SI{50}{\milli\liter} deionized water, and 1 x \SI{50}{\milli\liter} brine. The organic phase was dried over \SI{4}{\AA} molecular sieves overnight in a round bottom flask covered in aluminum. The molecular sieves were filtered out and the mixture concentrated in vacuo at a bath temperature of \SI{40}{\degreeCelsius}. During this, the monomer polymerized into a solid block which has not been analyzed via \gls{NMR}. For further investigations of this mechanism for \gls{LpMe}, a slower cooling process should be used after finishing the reaction. Additionally, adding an inhibitor that can be filtered out over basic aluminum oxide, like \gls{MeHQ}, should help prevent premature polymerization during the storage of the monomer.\\
-	The reaction was also repeated for the \gls{LpEt} and it needs to be mentioned, that no polymerization occurred during that monomer synthesis (\autoref{fig:NMR_LpEt}), but the \gls{LpEt} also condensed in the rotary evaporator in small amounts. It is therefore necessary for further work to evaluate the benefits of using \gls{LpMe}, like experience in working with that monomer and a simpler \gls{NMR} evaluation, over using \gls{LpEt}, which uses the more green alcohol and for which the Fischer esterification works without polymerization.\\
-	As an alternative approach, the Steglich esterification has been implemented for the synthesis of \gls{LpMe}. For this, the synthesis procedures by \citeauthor{hylla_raft-derived_2025} have been used. 
+	Once the esterification was done, a spoon (approx. \SI{1}{\gram}) of sodium bicarbonate was added under reflux and stirred for \SI{45}{\minute}. The heat was then turned off and frozen with liquid nitrogen to store the mixture in the fridge. While checking on it for further work-up, it was visible that some monomer had polymerized. The work-up was still conducted, which meant filtering it through cotton wool into a round bottom flask and concentrating it in vacuo until precipitation was visible at a bath temperature of \SI{40}{\degreeCelsius}. The concentrated mixture was then diluted in approximately \SI{20}{\milli\liter} ethyl acetate, filtered through cotton wool and transferred into a separatory funnel. The organic phase was then washed with 2 x \SI{50}{\milli\liter} concentrated sodium hyrogen carbonate solution, 1 x \SI{50}{\milli\liter} de-ionized water, and 1 x \SI{50}{\milli\liter} brine. The organic phase was dried over \SI{4}{\AA} molecular sieves overnight in a round bottom flask covered in aluminum. The molecular sieves were filtered out and the mixture concentrated in vacuo at a bath temperature of \SI{40}{\degreeCelsius}. During this, the monomer polymerized into a solid block which has not been analyzed via \gls{NMR}. For further investigations of this mechanism for \gls{LpMe}, a slower cooling process should be used after finishing the reaction. Additionally, adding an inhibitor that can be filtered out over basic aluminum oxide, like \gls{MeHQ}, should help prevent premature polymerization during the storage of the monomer.\\
+	The reaction was also repeated for the \gls{LpEt} and it needs to be mentioned, that no polymerization occurred during that monomer synthesis (\autoref{fig:NMR_LpEt}), but the \gls{LpEt} also condensed in the rotary evaporator in small amounts. It is therefore necessary for further work to evaluate the benefits of using \gls{LpMe}, like experience in working with that monomer and a simpler \gls{NMR} evaluation, over using \gls{LpEt}, which uses the more green alcohol and for which the Fischer esterification works without polymerization.\\\\
+	As an alternative approach, the Steglich esterification has been implemented for the synthesis of \gls{LpMe}. For this, the synthesis procedures by \citeauthor{hylla_raft-derived_2025} have been used. Other sources have used the water soluble \gls{EDC} (\autoref{fig:EDC}) as a coupling agent instead of \gls{DCC} (\autoref{fig:DCC}). It was aimed to exchange the coupling agent with the idea of omitting the column chromatography step in this work. \cite{hylla_raft-derived_2025,koelbl_greener_2025}
+	\begin{figure}[H]
+		\begin{subfigure}{0.5\textwidth}
+			\centering
+			\includegraphics[width=0.7\linewidth]{Graphs/DCC.png} 
+			\caption{\glsxtrfull{DCC}}
+			\label{fig:DCC}
+		\end{subfigure}
+		\begin{subfigure}{0.5\textwidth}
+			\centering
+			\includegraphics[width=\linewidth]{Graphs/EDC-HCl.png}
+			\caption{\centering\glsxtrfull{EDC}}
+			\label{fig:EDC}
+		\end{subfigure}
+		
+		\caption{Structures of the commonly used coupling agents for Steglich esterification.}
+		\label{fig:Monomer_coupling_agents}
+	\end{figure}\noindent
+	The following chemicals have been used for the Steglich Esterification with \gls{EDC}. The synthesis procedure is adapted by \citeauthor{hylla_raft-derived_2025} and \citeauthor{koelbl_greener_2025}\cite{hylla_raft-derived_2025,koelbl_greener_2025}:
+	\begin{table}[H]
+		\centering
+		\caption[Used chemicals and duration for Steglich esterification at room temperature with methanol.]{\centering Stochiometry of used chemicals and duration for Steglich esterification at room temperature with methanol.}
+		\begin{tabular}{|c|cccc|}
+			\hline
+			\textbf{chemical} & \multicolumn{1}{c|}{\textbf{equiv.}} & \multicolumn{1}{c|}{\textbf{m [g]}} & \multicolumn{1}{c|}{\textbf{n [mmol]}} & \textbf{V [mL]} \\ \hline
+			\gls{LA} & \multicolumn{1}{c|}{1.0} & \multicolumn{1}{c|}{20.0} & \multicolumn{1}{c|}{96.9} & - \\ \hline
+			\glsxtrshort{DCM} & \multicolumn{1}{c|}{48.5} & \multicolumn{1}{c|}{399} & \multicolumn{1}{c|}{4698} & 300 \\ \hline
+			\glsxtrshort{DMAP} & \multicolumn{1}{c|}{0.1} & \multicolumn{1}{c|}{1.2} & \multicolumn{1}{c|}{9.7} & - \\ \hline
+			\glsxtrshort{EDC} & \multicolumn{1}{c|}{1.2} & \multicolumn{1}{c|}{22.3} & \multicolumn{1}{c|}{116.3} & - \\ \hline
+			methanol & \multicolumn{1}{c|}{6.6} & \multicolumn{1}{c|}{20.5} & \multicolumn{1}{c|}{639.8} & 25.9 \\ \hhline{|=|=|=|=|=|}
+			temperature [$^\circ\mathrm{C}$] & \multicolumn{4}{c|}{20 (room temperature)} \\ \hline
+			duration [h] & \multicolumn{4}{c|}{16 (over night)} \\ \hline
+		\end{tabular}
+	\end{table}\noindent
+	\gls{LA} is dissolved in anhydrous \gls{DCM} and chilled using an ice bath. Then \gls{EDC} and \gls{DMAP} are added. Methanol is then slowly added dropwise and the solution is left to warm to room temperature and stirred for \SI{16}{\hour}. To ensure completion of the reaction, the conversion is monitored using \gls{TLC} with a mixture of hexane and ethyl acetate in a volume ratio of 20:1 as the eluent ($\mathrm{R_F}=0.3$). The suspension was diluted with ethyl acetate and washed with 3 x \SI{50}{\milli\liter} \SI{1}{\mole\per\liter} HCl aqueous solution,\linebreak 3 x \SI{50}{\milli\liter} de-ionized water, 3 x \SI{50}{\milli\liter} saturated sodium hydrogen carbonate solution and 3 x \SI{50}{\milli\liter} brine. The organic phase was dried over \SI{4}{\AA} molecular sieves overnight in a round bottom flask covered in aluminum. The molecular sieves were filtered out and the mixture concentrated in vacuo at a bath temperature of \SI{40}{\degreeCelsius}. The purity was checked via \gls{NMR}, and with no signals of \gls{EDC} visible, a few milligrams of \gls{MeHQ} were added to the product and stored in the fridge covered with aluminum foil. For using the \gls{LpMe}, it was diluted in ethyl actetate, filtered over basic aluminum oxide. The solution was then concentrated in vacuo at a bath temperature of \SI{40}{\degreeCelsius}, degassed with argon and stored with aluminum foil in the fridge.\\
+	The \gls{NMR} spectrum of the shaken-out and concentrated monomer can be found in the appendix (\autoref{fig:NMR_LpMe}). It has been successfully established to omit the column chromatography step by using the water soluble \gls{EDC} which is extracted in the separatory funnel. This synthesis procedure provides a reliable and less time and resource consuming way of synthesizing \gls{LpMe} via the Steglich esterification which should be used unless the Fischer esterification can be used for the methyl substituted monomer.
 	\section{Thermal \glsentrytitlecase{RAFT}{long}-Polymerization of \glsentrytitlecase{LpMe}{long}}
-	Different Conditions
-	Different RAFT agents
+	\subsection{Variation of Conditions for \glsentrytitlecase{MMPDT}{long}}
+	For the \gls{RAFT} polymerization of \gls{LpMe}, only a small variety of \gls{RAFT} agents have been tested, some of which can be found in the work by K. \citeauthor{lee_controlled_2025} or D. \citeauthor{lee_light-mediated_2026} and in both cases initiated via photo-\gls{RAFT}. This work focuses on the homopolymerization of \gls{LpMe} via thermal initiation at low temperatures. For this, a variety of \gls{RAFT} agents were to be tested in different conditions to obtain high conversions and in short times. Especially the work by K. \citeauthor{lee_controlled_2025} is particularly valuable for this work, as it contains the homopolymerization of \gls{LpEt}. Both works show higher conversions and shorter reaction times for trithiocarbonates over benzodithioates. For testing the right reaction conditions, a new trithiocarbonate, \gls{MMPDT} (\autoref{fig:MMPDT}), was chosen. The tested conditions were combinations of reaction temperatures at room temperature and \SI{40}{\degreeCelsius}, as well as bulk and solution polymerizations. The reaction parameters can be found in \autoref{tab:var_condition_RT} and \autoref{tab:var_condition_40}.\cite{lee_controlled_2025,lee_light-mediated_2026}
+	\begin{figure}[H]
+		\begin{subfigure}{0.33\textwidth}
+			\centering
+			\includegraphics[width=\linewidth]{Graphs/MMPDT.png} 
+			\caption{\centering\glsxtrfull{MMPDT}}
+			\label{fig:MMPDT}
+		\end{subfigure}
+		\begin{subfigure}{0.33\textwidth}
+			\centering
+			\includegraphics[width=.7\linewidth]{Graphs/CPBT.png}
+			\caption{\centering\glsxtrfull{CPBT}}
+			\label{fig:CPBT}
+		\end{subfigure}
+		\begin{subfigure}{0.33\textwidth}
+			\centering
+			\includegraphics[width=\linewidth]{Graphs/CPDT.png}
+			\caption{\centering\glsxtrfull{CPDT}}
+			\label{fig:CPDT}
+		\end{subfigure}
+		\caption[\centering Structures of the used \glsxtrshort{RAFT} agents for the polymerization of \glsxtrshort{LpMe}.]{\centering Structures of the used \glsxtrfull{RAFT} agents for the polymerization of \glsxtrfull{LpMe}.}
+		\label{fig:RAFT_agents}
+	\end{figure}\noindent
+	\begin{table}[H]
+		\centering
+		\caption[Stochiometry of used chemicals for \glsxtrshort{RAFT} polymerization at room temperature with \glsxtrshort{MMPDT}.]{\centering Stochiometry of used chemicals for \glsxtrfull{RAFT} polymerization at room temperature with \glsxtrfull{MMPDT}.}
+		\label{tab:var_condition_RT}
+		\begin{tabular}{|c|ccccc|}
+			\hline
+			\textbf{chemical} & \multicolumn{1}{c|}{\textbf{equiv.}} & \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}m \\ {[}g{]}\end{tabular}}} & \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}n \\ {[}mmol{]}\end{tabular}}} & \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}V \\ {[}µL{]}\end{tabular}}} & \textbf{\begin{tabular}[c]{@{}c@{}}c\\ {[}mmol/L{]}\end{tabular}} \\ \hline
+			\glsxtrshort{LpMe} & \multicolumn{1}{c|}{50} & \multicolumn{1}{c|}{0.882} & \multicolumn{1}{c|}{4.00} & \multicolumn{1}{c|}{780} & 5.0 \\ \hline
+			\glsxtrshort{MMPDT} & \multicolumn{1}{c|}{1.0} & \multicolumn{1}{c|}{0.030} & \multicolumn{1}{c|}{0.08} & \multicolumn{1}{c|}{30.0} & \cellcolor[HTML]{C0C0C0}{\color[HTML]{000000} -} \\ \hline
+			\glsxtrshort{V70} & \multicolumn{1}{c|}{0.07} & \multicolumn{1}{c|}{0.0017} & \multicolumn{1}{c|}{\num{5.5e-3}} & \multicolumn{1}{c|}{-} & \cellcolor[HTML]{C0C0C0}{\color[HTML]{000000} -} \\ \hline
+			temperature {[}$^\circ\mathrm{C}${]} & \multicolumn{5}{c|}{20 (room temperature)} \\ \hline
+			\glsxtrshort{LpMe} & \multicolumn{1}{c|}{50} & \multicolumn{1}{c|}{0.550} & \multicolumn{1}{c|}{2.52} & \multicolumn{1}{c|}{490} & 2.5 \\ \hline
+			\glsxtrshort{MMPDT} & \multicolumn{1}{c|}{1.0} & \multicolumn{1}{c|}{0.019} & \multicolumn{1}{c|}{0.05} & \multicolumn{1}{c|}{18.8} & \cellcolor[HTML]{C0C0C0}{\color[HTML]{000000} -} \\ \hline
+			\glsxtrshort{V70} & \multicolumn{1}{c|}{0.19} & \multicolumn{1}{c|}{0.003} & \multicolumn{1}{c|}{0.01} & \multicolumn{1}{c|}{-} & \cellcolor[HTML]{C0C0C0}{\color[HTML]{000000} -} \\ \hline
+			anisole & \multicolumn{1}{c|}{90} & \multicolumn{1}{c|}{0.488} & \multicolumn{1}{c|}{4.51} & \multicolumn{1}{c|}{490} & \cellcolor[HTML]{C0C0C0}{\color[HTML]{000000} -} \\ \hline
+			temperature {[}$^\circ\mathrm{C}${]} & \multicolumn{5}{c|}{20 (room temperature)} \\ \hline
+		\end{tabular}
+	\end{table}
+	\begin{table}[H]
+		\centering
+		\caption[Stochiometry of used chemicals for \glsxtrshort{RAFT} polymerization at \SI{40}{\degreeCelsius} with \glsxtrshort{MMPDT}.]{\centering Stochiometry of used chemicals for \glsxtrfull{RAFT} polymerization at \SI{40}{\degreeCelsius} with \glsxtrfull{MMPDT}.}
+		\label{tab:var_condition_40}
+		\begin{tabular}{|c|ccccc|}
+			\hline
+			\textbf{chemical} & \multicolumn{1}{c|}{\textbf{equiv.}} & \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}m \\ {[}g{]}\end{tabular}}} & \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}n \\ {[}mmol{]}\end{tabular}}} & \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}V \\ {[}µL{]}\end{tabular}}} & \textbf{\begin{tabular}[c]{@{}c@{}}c\\ {[}mmol/L{]}\end{tabular}} \\ \hline
+			\glsxtrshort{LpMe} & \multicolumn{1}{c|}{50} & \multicolumn{1}{c|}{0.882} & \multicolumn{1}{c|}{4.00} & \multicolumn{1}{c|}{780} & 5.0 \\ \hline
+			\glsxtrshort{MMPDT} & \multicolumn{1}{c|}{1.0} & \multicolumn{1}{c|}{0.030} & \multicolumn{1}{c|}{0.08} & \multicolumn{1}{c|}{30.0} & \cellcolor[HTML]{C0C0C0}{\color[HTML]{000000} -} \\ \hline
+			\glsxtrshort{V70} & \multicolumn{1}{c|}{0.12} & \multicolumn{1}{c|}{0.0029} & \multicolumn{1}{c|}{\num{9.4e-3}} & \multicolumn{1}{c|}{-} & \cellcolor[HTML]{C0C0C0}{\color[HTML]{000000} -} \\ \hline
+			temperature {[}$^\circ\mathrm{C}${]} & \multicolumn{5}{c|}{40} \\ \hline
+			\glsxtrshort{LpMe} & \multicolumn{1}{c|}{50} & \multicolumn{1}{c|}{0.550} & \multicolumn{1}{c|}{2.52} & \multicolumn{1}{c|}{490} & 2.5 \\ \hline
+			\glsxtrshort{MMPDT} & \multicolumn{1}{c|}{1.0} & \multicolumn{1}{c|}{0.019} & \multicolumn{1}{c|}{0.05} & \multicolumn{1}{c|}{18.8} & \cellcolor[HTML]{C0C0C0}{\color[HTML]{000000} -} \\ \hline
+			\glsxtrshort{V70} & \multicolumn{1}{c|}{0.11} & \multicolumn{1}{c|}{0.0017} & \multicolumn{1}{c|}{\num{5.5e-3}} & \multicolumn{1}{c|}{-} & \cellcolor[HTML]{C0C0C0}{\color[HTML]{000000} -} \\ \hline
+			ansiole & \multicolumn{1}{c|}{90} & \multicolumn{1}{c|}{0.488} & \multicolumn{1}{c|}{4.51} & \multicolumn{1}{c|}{490} & \cellcolor[HTML]{C0C0C0}{\color[HTML]{000000} -} \\ \hline
+			temperature {[}$^\circ\mathrm{C}${]} & \multicolumn{5}{c|}{40} \\ \hline
+		\end{tabular}
+	\end{table}\noindent
+	For both the bulk and solution polymerization, all reactants were mixed together in a glass vial, degassed with \ch{N2} for \SI{15}{\minute} and stirred at the respective temperatures. For determining the conversions, a sample was taken in regular intervals, and put into an \gls{NMR} tube filled with \gls{CDCl3} with 10~wt\% \gls{MeHQ} to prohibit further reaction. A \textsuperscript{1}\textit{H}-\gls{NMR} spectrum was taken and the conversion determined by the following equation:\\
+	\begin{equation}
+		p = \frac{\frac{\mathrm{integral~polymer}}{\mathrm{number~nuclides~polymer~signal}}}{\frac{\mathrm{integral~polymer}}{\mathrm{number~nuclides~polymer~signal}}+\frac{\mathrm{integral~monomer}}{\mathrm{number~nuclides~monomer~signal}}}
+	\end{equation}
+	As for the signals, the signal (dtd) at \SI{2.94}{\ppm} has a number of nuclides of one. The polymer signal at \SI{3.28}{\ppm} corresponds to three hydrogen atoms. \autoref{fig:A_B_conversion} shows the linearized plot of the conversion over time. It becomes obvious that that higher conversions can be reached with higher temperatures. This is to be expected, as the ten hour half life decomposition temperature of \gls{V70} is at \SI{30}{\degreeCelsius}, therefore higher temperatures should lead to faster half-life decomposition. Additionally, with higher monomer concentrations higher conversions can be obtained.\\
+	\gls{SEC} measurements (\autoref{fig:SEC_A_B_total}) show a bimodal distribution for the solution polymerization at room temperature while the other conditions provided a monomodal distribution. The lowest \gls{dispersity} could be found in the experiment for solution polymerization at \SI{40}{\degreeCelsius}.
+	\begin{figure}[H]
+		\begin{subfigure}{0.33\textwidth}
+			\centering
+			\includegraphics[width=.95\linewidth]{Graphs/MALDI_endgroup_V70.png} 
+			\caption{\centering Initiator endgroup fragment of \gls{V70}.}
+			\label{fig:endgroup_V70}
+		\end{subfigure}
+		\begin{subfigure}{0.33\textwidth}
+			\centering
+			\includegraphics[width=.9\linewidth]{Graphs/MALDI_endgroup_DT.png}
+			\caption{\centering \glsxtrshort{RAFT} endgroup fragment of the Z-group, referred to as DT.}
+			\label{fig:endgroup_DT}
+		\end{subfigure}
+		\begin{subfigure}{0.33\textwidth}
+			\centering
+			\includegraphics[width=.6\linewidth]{Graphs/MALDI_endgroup_DMME.png}
+			\caption{\centering\glsxtrshort{RAFT} endgroup fragment of the R-group, referred to as DMME.}
+			\label{fig:endgroup_DMME}
+		\end{subfigure}
+		\caption[Structures of the used \glsxtrshort{MALDI} endgroups.]{\centering Structures of the used \glsxtrshort{MALDI} endgroups with \glsxtrshort{V70} as an initiator and \glsxtrshort{MMPDT} as the \glsxtrshort{RAFT} agent.}
+		\label{fig:MALDI_endhroups}
+	\end{figure}\noindent
+	\gls{MALDI} measurements show the most remaining Z-groups for the bulk polymerization at \SI{40}{\degreeCelsius}. In the remaining experiments, the Z-group can be found in one species as well, but \gls{FRP} can also be observed via self-initiation.\\
+	It needs to be mentioned that the \gls{SEC} and \gls{MALDI} measurements were performed on samples that were terminated after a reaction over night which is not conductive for receiving results on \gls{RAFT} active polymers. For this, the experiment would need to be repeated and terminated after a shorter reaction time. It is yet conductive enough to give an idea on how to choose the conditions: the \gls{NMR} show that higher reaction temperatures should be chosen to obtain higher conversion rates. Between solution and bulk polymerization, both seem to be similar in quality of results, which is why the concentration should be chosen depending on the required experiment.
+	\subsection{Variation of \glsentrytitlecase{RAFT}{long} agents}
+	The next step of this work was to test a variety of \gls{RAFT} agents for the homopolymerization of \gls{LpMe}. For this, \gls{MMPDT} was chosen again to test reproducability, \gls{CPBT} (\autoref{fig:CPBT}) to compare the results of thermal initiation over the photo-initiation demonstrated by K. \citeauthor{lee_controlled_2025}, and \gls{CPDT} (\autoref{fig:CPDT}) as a new \gls{RAFT} agent.\cite{lee_controlled_2025}
 	\section{Chain Extension \& \glsentrytitlecase{PISA}{long} with \glsentrytitlecase{LpMe}{long} and \glsentrytitlecase{DMAA}{long}}
+	PISA
+	Chain extension LpMe + DMAA
+	Chain extension DMAA + LpMe
 	\chapter{Summary \& Outlook}
 	
 	\newpage
 	\printnoidxglossary[type=acronym]
 	\listoffigures
 	\addcontentsline{toc}{chapter}{List of Figures}
-	{\let\clearpage\relax\listoftables}
+	\listoftables
 	\addcontentsline{toc}{chapter}{List of Tables}
 		%\bibliographystyle{plain}
 	\printbibliography
@@ -333,15 +468,133 @@
 	\makeatother
 	\chapter*{Appendix} 
 	\addcontentsline{toc}{chapter}{Appendix}
-	\section*{\glsentrytitlecase{NMR}{long}}
+	\section*{\glsentrytitlecase{NMR}{long} spectra}
 	\addcontentsline{toc}{section}{\glsentrytitlecase{NMR}{long} spectra}
 	\subsection*{Fischer Esterification of \glsentrytitlecase{LpEt}{long}}
+	\addcontentsline{toc}{subsection}{Fischer Esterification of \glsentrytitlecase{LpEt}{long}}
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{Graphs/NMR/LpEt_08.06.2026.pdf}
-		\caption[\textsuperscript{1}\textit{H}-\gls{NMR} spectrum of \gls{LpEt}, synthesized via Fischer esterification.]{\textsuperscript{1}\textit{H}-\gls{NMR} spectrum (600 MHz, \gls{CDCl3}) of \gls{LpEt}, synthesized via Fischer esterification.}
+		\caption[\textsuperscript{1}\textit{H}-\gls{NMR} spectrum of \gls{LpEt}, synthesized via Fischer esterification.]{\centering\textsuperscript{1}\textit{H}-\gls{NMR} spectrum (600 MHz, \gls{CDCl3}) of \gls{LpEt}, synthesized via Fischer esterification.}
 		\label{fig:NMR_LpEt}
-	\end{figure}
+	\end{figure}\noindent
 	Peak list:\\
 	\textsuperscript{1}\textit{H}-\gls{NMR} (600 MHz, \gls{CDCl3}) δ 4.09 (q, J = 7.1 Hz, 1H), 3.54 (dq, J = 8.5, 6.3 Hz, 0H), 3.19 – 3.04 (m, 1H), 2.43 (dtd, J = 13.0, 6.6, 5.3 Hz, 0H), 2.28 (t, J = 7.5 Hz, 1H), 1.88 (dq, J = 12.6, 6.9 Hz, 0H), 1.78 – 1.55 (m, 2H), 1.52 – 1.36 (m, 1H), 1.22 (t, J = 7.2 Hz, 1H).
+	\subsection*{Steglich Esterification of \glsentrytitlecase{LpMe}{long}}
+	\addcontentsline{toc}{subsection}{Steglich Esterification of \glsentrytitlecase{LpMe}{long}}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{Graphs/NMR/LpMe_01.09.2026.pdf}
+		\caption[\textsuperscript{1}\textit{H}-\gls{NMR} spectrum of \gls{LpMe}, synthesized via Steglich esterification with \gls{EDC}.]{\centering\textsuperscript{1}\textit{H}-\gls{NMR} spectrum (600 MHz, \gls{CDCl3}) of \gls{LpEt}, synthesized via Steglich esterification with \gls{EDC}.}
+		\label{fig:NMR_LpMe}
+	\end{figure}\noindent
+	Peak list:\\
+	\textsuperscript{1}\textit{H}-\gls{NMR} (600 MHz, \gls{CDCl3}) δ 3.65 (s, 5H), 3.55 (dq, J = 8.8, 6.5 Hz, 2H), 3.25 – 3.01 (m, 3H), 2.49 – 2.40 (m, 2H), 2.31 (t, J = 7.5 Hz, 3H), 1.89 (dq, J = 13.6, 6.9 Hz, 2H), 1.74 – 1.58 (m, 7H), 1.53 – 1.37 (m, 3H).
+	\subsection*{\glsentrytitlecase{RAFT}{long} agents}
+	\addcontentsline{toc}{subsection}{\glsentrytitlecase{RAFT}{long} agents}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{Graphs/NMR/MMPDT_RAFT_21.05.2026.pdf}
+		\caption[\textsuperscript{1}\textit{H}-\gls{NMR} spectrum of \glsxtrshort{MMPDT}.]{\centering\textsuperscript{1}\textit{H}-\gls{NMR} spectrum (600 MHz, \gls{CDCl3}) of \glsxtrfull{MMPDT}.}
+		\label{fig:RAFT_MMPDT}
+	\end{figure}\noindent
+	Peak list:\\
+	\textsuperscript{1}\textit{H}-\gls{NMR} (600 MHz, \gls{CDCl3}) δ 3.70 (d, J = 1.5 Hz, 3H), 3.26 (td, J = 7.4, 1.2 Hz, 2H), 1.68 (d, J = 1.5 Hz, 6H), 1.67 – 1.62 (m, 2H), 1.37 (p, J = 7.0 Hz, 2H), 1.33 – 1.25 (m, 4H), 1.25 (s, 12H), 0.87 (td, J = 7.1, 1.2 Hz, 3H).
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{Graphs/NMR/CPBT_RAFT_08.07.2026.pdf}
+		\caption[\textsuperscript{1}\textit{H}-\gls{NMR} spectrum of \glsxtrshort{CPBT}.]{\centering\textsuperscript{1}\textit{H}-\gls{NMR} spectrum (600 MHz, \gls{CDCl3}) of \glsxtrfull{CPBT}.}
+		\label{fig:RAFT_CPBT}
+	\end{figure}\noindent
+	Peak list:\\
+	\textsuperscript{1}\textit{H}-\gls{NMR} (600 MHz, \gls{CDCl3}) δ 7.99 – 7.94 (m, 1H), 7.60 (tt, J = 7.4, 1.2 Hz, 0H), 7.46 – 7.39 (m, 1H), 1.98 (s, 3H).
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{Graphs/NMR/CPDT_RAFT_08.07.2026.pdf}
+		\caption[\textsuperscript{1}\textit{H}-\gls{NMR} spectrum of \glsxtrshort{CPDT}.]{\centering\textsuperscript{1}\textit{H}-\gls{NMR} spectrum (600 MHz, \gls{CDCl3}) of \glsxtrfull{CPDT}.}
+		\label{fig:RAFT_CPDT}
+	\end{figure}\noindent
+	Peak list:\\
+	\textsuperscript{1}\textit{H}-\gls{NMR} (600 MHz, \gls{CDCl3}) δ 3.32 (t, J = 7.5 Hz, 1H), 1.86 (s, 3H), 1.71 – 1.62 (m, 1H), 1.43 – 1.35 (m, 1H), 1.25 (s, 6H), 0.87 (t, J = 7.0 Hz, 2H).
+	\subsection*{Thermal \glsentrytitlecase{RAFT}{long} polymerization of \glsentrytitlecase{LpMe}{long}}
+	\addcontentsline{toc}{subsection}{Thermal \glsentrytitlecase{RAFT}{long} polymerization of \glsentrytitlecase{LpMe}{long}}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{Graphs/B_A_20_40_conversion.png}
+		\caption[Linearized conversions of the different conditions for the \glsentrytitlecase{RAFT}{short} polymerization of \glsentrytitlecase{LpMe}{short} with \glsentrytitlecase{MMPDT}{short}.]{Linearized conversions of the different conditions for the \glsentrytitlecase{RAFT}{long} polymerization of \glsentrytitlecase{LpMe}{long} with \glsentrytitlecase{MMPDT}{long}, determined via \textsuperscript{1}\textit{H}-\gls{NMR} (600 MHz, \gls{CDCl3}).}
+		\label{fig:A_B_conversion}
+	\end{figure}\newpage
+	\subsection*{Variation of \glsentrytitlecase{RAFT}{long} agents for polymerization of \glsentrytitlecase{LpMe}{long}}
+	\addcontentsline{toc}{subsection}{Variation of \glsentrytitlecase{RAFT}{long} agents for polymerization of \glsentrytitlecase{LpMe}{long}}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{Graphs/RAFT_agents_conversion_180.png}
+		\caption[Linearized conversions for the different \glsentrytitlecase{RAFT}{short} agents for the polymerization of \glsentrytitlecase{LpMe}{short}.]{Linearized conversions for the different \glsentrytitlecase{RAFT}{long} agents for the bulk polymerization of \glsentrytitlecase{LpMe}{long} at \SI{40}{\degreeCelsius}, determined via \textsuperscript{1}\textit{H}-\gls{NMR} (600 MHz, \gls{CDCl3}).}
+		\label{fig:RAFT_var_conversion}
+	\end{figure}
+	\begin{table}[H]
+		\centering
+		\caption[Conversions of the different \glsentrytitlecase{RAFT}{short} agents.]{Conversions of the different \glsentrytitlecase{RAFT}{long} agents from \autoref{fig:A_B_conversion} and \ref{fig:RAFT_var_conversion}.}
+		\begin{tabular}{|c|cccc|}
+			\hline
+			& \multicolumn{2}{c|}{\textbf{\glsxtrshort{MMPDT}}} & \multicolumn{1}{c|}{\textbf{\glsxtrshort{CPBT}}} & \textbf{\glsxtrshort{CPDT}} \\ \hline
+			\textbf{time [min]} & \multicolumn{4}{c|}{\textbf{conversion p [\%]}} \\ \hline
+			& \multicolumn{1}{c|}{\textit{previous}} & \multicolumn{1}{c|}{41} & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}-} & \cellcolor[HTML]{C0C0C0}- \\ \cline{2-5} 
+			\multirow{-2}{*}{90} & \multicolumn{1}{c|}{\textit{this}} & \multicolumn{1}{c|}{25} & \multicolumn{1}{c|}{8} & 18 \\ \hline
+			120 & \multicolumn{2}{c|}{33} & \multicolumn{1}{c|}{10} & 22 \\ \hline
+			180 & \multicolumn{2}{c|}{10} & \multicolumn{1}{c|}{7} & 4 \\ \hline
+		\end{tabular}
+	\end{table}\newpage
+	\section*{\glsentrytitlecase{SEC}{long}}
+	\addcontentsline{toc}{section}{\glsentrytitlecase{SEC}{long}}
+	\subsection*{Variation of Conditions for \glsentrytitlecase{MMPDT}{short}}
+	\addcontentsline{toc}{subsection}{Variation of Conditions for \glsentrytitlecase{MMPDT}{short}}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{Graphs/Combined_total.png}
+		\caption[\glsentrytitlecase{SEC}{short} of the \glsentrytitlecase{MMPDT}{short} experiment with different concentrations and temperatures.]{\centering\glsentrytitlecase{SEC}{long} of the \glsentrytitlecase{MMPDT}{long} experiment with different concentrations and temperatures.}
+		\label{fig:SEC_A_B_total}
+	\end{figure}
+\begin{table}[H]
+	\centering
+	\caption{\gls{Mw}, \gls{Mn} and \gls{dispersity} of the corresponding chromatogram from \autoref{fig:SEC_A_B_total}.}
+	\begin{tabular}{cccccc|}
+		\hline
+		\multicolumn{1}{|c|}{c [mol/L]} & \multicolumn{2}{c|}{4.9} & \multicolumn{3}{c|}{2.5} \\ \hline
+		\multicolumn{1}{|c|}{temperature [$^\circ\mathrm{C}$]} & \multicolumn{1}{c|}{40} & \multicolumn{1}{c|}{20} & \multicolumn{1}{c|}{40} & \multicolumn{2}{c|}{20} \\ \hline
+		&  &  & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{low molecular weight} & high molecular weight \\ \hline
+		\multicolumn{1}{|c|}{\glsxtrshort{Mw} [g/mol]} & \multicolumn{1}{c|}{12830} & \multicolumn{1}{c|}{21720} & \multicolumn{1}{c|}{12820} & \multicolumn{1}{c|}{12860} & 185000 \\ \hline
+		\multicolumn{1}{|c|}{\glsxtrshort{Mn} [g/mol]} & \multicolumn{1}{c|}{13010} & \multicolumn{1}{c|}{9067} & \multicolumn{1}{c|}{9973} & \multicolumn{1}{c|}{9758} & 137500 \\ \hline
+		\multicolumn{1}{|c|}{\glsxtrshort{dispersity}} & \multicolumn{1}{c|}{1.415} & \multicolumn{1}{c|}{1.670} & \multicolumn{1}{c|}{1.285} & \multicolumn{1}{c|}{1.305} & 1.345 \\ \hline
+	\end{tabular}
+\end{table}
+\newpage
+\section*{\glsentrytitlecase{MALDI}{long} measurements}
+\addcontentsline{toc}{section}{\glsentrytitlecase{MALDI}{long}}
+\subsection*{Variation of Conditions for \glsentrytitlecase{MMPDT}{short}}
+\addcontentsline{toc}{subsection}{Variation of Conditions for \glsentrytitlecase{MMPDT}{short}}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{Graphs/MALDI/MALDI_A20.PNG}
+	\caption[Results of the \glsxtrshort{MALDI} analysis of the solution polymerization at room temperature.]{\centering Results of the \glsxtrfull{MALDI} analysis of the solution polymerization at room temperature, including identified endgroups.}
+	\label{fig:MALDI_A20}
+\end{figure}\noindent
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{Graphs/MALDI/MALDI_A40.PNG}
+	\caption[Results of the \glsxtrshort{MALDI} analysis of the solution polymerization at \SI{40}{\degreeCelsius}.]{Results of the \glsxtrfull{MALDI} analysis of the solution polymerization at \SI{40}{\degreeCelsius}, including identified endgroups.}
+	\label{fig:MALDI_A40}
+\end{figure}\noindent
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{Graphs/MALDI/MALDI_B20.PNG}
+	\caption[Results of the \glsxtrshort{MALDI} analysis of the bulk polymerization at room temperature.]{Results of the \glsxtrfull{MALDI} analysis of the bulk polymerization at room temperature, including identified endgroups.}
+	\label{fig:MALDI_B20}
+\end{figure}\noindent
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{Graphs/MALDI/MALDI_B40.PNG}
+	\caption[Results of the \glsxtrshort{MALDI} analysis of the bulk polymerization at \SI{40}{\degreeCelsius}.]{Results of the \glsxtrfull{MALDI} analysis of the bulk polymerization at \SI{40}{\degreeCelsius}, including identified endgroups.}
+	\label{fig:MALDI_B40}
+\end{figure}\noindent
 \end{document}
